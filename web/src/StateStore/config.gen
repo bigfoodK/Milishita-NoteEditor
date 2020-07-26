@@ -9,3 +9,4 @@ setAutoSaveDelay(second: number)
 setConfigState(state: ConfigState) -autoSave
 applyStorageItemToConfigState(keys: number, bpm: number) -autoSave
 setDefaultAppearBeforeBeats(beat: number)
+setBarWidth(pixel: number)

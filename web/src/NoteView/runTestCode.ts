@@ -1,4 +1,4 @@
-import { dispatch } from "~StateStore/store";
+import { dispatch, store } from "~StateStore/store";
 import { BarAction } from "~StateStore/_gen/bar_action.ts";
 import { LongNote, Bar } from "./types";
 import { LongNoteAction } from "~StateStore/_gen/longNote_action.ts";
@@ -18,6 +18,10 @@ function reviver(key: any, value: any) {
 }
 
 export function runTestCode() {
+  const { beats } = store.getState().barState
+  if (beats) {
+    return;
+  }
   bars
     .map((bar: any) => {
       const json = JSON.stringify(bar)

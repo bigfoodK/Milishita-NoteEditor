@@ -1,4 +1,4 @@
-import { IConfigReducers, ConfigActions, SetGuideBeatAction, SetDefaultBarBeatAction, SetConfigStateAction, SetAutoScrollAction, SetBpmAction, SetKeysAction, SetBeatHeightAction, SetAutoSaveAction, SetAutoSaveDelayAction, ApplyStorageItemToConfigStateAction, SetDefaultAppearBeforeBeatsAction } from "./config_action.ts";
+import { IConfigReducers, ConfigActions, SetGuideBeatAction, SetDefaultBarBeatAction, SetConfigStateAction, SetAutoScrollAction, SetBpmAction, SetKeysAction, SetBeatHeightAction, SetAutoSaveAction, SetAutoSaveDelayAction, ApplyStorageItemToConfigStateAction, SetDefaultAppearBeforeBeatsAction, SetBarWidthAction } from "./config_action.ts";
 import { ConfigState } from "./config_state";
 
 export class ConfigReducers implements IConfigReducers {
@@ -35,6 +35,9 @@ export class ConfigReducers implements IConfigReducers {
   }
   SET_DEFAULT_APPEAR_BEFORE_BEATS(state: ConfigState, action: SetDefaultAppearBeforeBeatsAction): ConfigState {
     return state.update('defaultAppearBeforeBeats', _ => action.beat);
+  }
+  SET_BAR_WIDTH(state: ConfigState, action: SetBarWidthAction): ConfigState {
+    return state.update('barWidth', _ => action.pixel);
   }
 };
 

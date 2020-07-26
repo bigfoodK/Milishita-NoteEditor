@@ -13,6 +13,7 @@ export const SET_AUTO_SAVE_DELAY = "SET_AUTO_SAVE_DELAY" as const;
 export const SET_CONFIG_STATE = "SET_CONFIG_STATE" as const;
 export const APPLY_STORAGE_ITEM_TO_CONFIG_STATE = "APPLY_STORAGE_ITEM_TO_CONFIG_STATE" as const;
 export const SET_DEFAULT_APPEAR_BEFORE_BEATS = "SET_DEFAULT_APPEAR_BEFORE_BEATS" as const;
+export const SET_BAR_WIDTH = "SET_BAR_WIDTH" as const;
 
  export namespace ConfigAction {
   export function setBeatHeight(beatHeight: number) {
@@ -103,6 +104,14 @@ export const SET_DEFAULT_APPEAR_BEFORE_BEATS = "SET_DEFAULT_APPEAR_BEFORE_BEATS"
     };
   }
 
+
+  export function setBarWidth(pixel: number) {
+    return {
+      type: SET_BAR_WIDTH,
+      pixel,
+    };
+  }
+
 }
 
 
@@ -173,7 +182,13 @@ export type SetDefaultAppearBeforeBeatsAction = {
 };
 
 
-export type ConfigActions = SetBeatHeightAction | SetKeysAction | SetGuideBeatAction | SetBpmAction | SetDefaultBarBeatAction | SetAutoScrollAction | SetAutoSaveAction | SetAutoSaveDelayAction | SetConfigStateAction | ApplyStorageItemToConfigStateAction | SetDefaultAppearBeforeBeatsAction
+export type SetBarWidthAction = {
+  type: typeof SET_BAR_WIDTH;
+  pixel: number;
+};
+
+
+export type ConfigActions = SetBeatHeightAction | SetKeysAction | SetGuideBeatAction | SetBpmAction | SetDefaultBarBeatAction | SetAutoScrollAction | SetAutoSaveAction | SetAutoSaveDelayAction | SetConfigStateAction | ApplyStorageItemToConfigStateAction | SetDefaultAppearBeforeBeatsAction | SetBarWidthAction
 
 export interface IConfigReducers {
   SET_BEAT_HEIGHT(state: ConfigState, action: SetBeatHeightAction): ConfigState;
@@ -187,4 +202,5 @@ export interface IConfigReducers {
   SET_CONFIG_STATE(state: ConfigState, action: SetConfigStateAction): ConfigState;
   APPLY_STORAGE_ITEM_TO_CONFIG_STATE(state: ConfigState, action: ApplyStorageItemToConfigStateAction): ConfigState;
   SET_DEFAULT_APPEAR_BEFORE_BEATS(state: ConfigState, action: SetDefaultAppearBeforeBeatsAction): ConfigState;
+  SET_BAR_WIDTH(state: ConfigState, action: SetBarWidthAction): ConfigState;
 };
